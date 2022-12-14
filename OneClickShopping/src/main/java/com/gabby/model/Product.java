@@ -1,111 +1,67 @@
 package com.gabby.model;
 
+import javax.annotation.Generated;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Product {
 
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer productId;
+	
+	
+	@Size(min =3, max = 25, message = "Product name should contain min 3 charater")
 	private String productName;
+	
+	@Min(value = 1, message = "Please Enter the valid  price")
 	private Double price;
+	
+	
+	private String color;
+	
+	
 	private String dimension;
-	private String specification;
-	private String manufacturer;
+	
+	
+	private String manufacture;
+	
+	
+	@Min(value = 1, message = "Please Enter the valid Quantity")
 	private Integer quantity;
 	
+	@Embedded
 	private Category category;
 
-	
-	public Product() {}
-	
-	public Product(Integer productId, String productName, Double price, String dimension, String specification,
-			String manufacturer, Integer quantity, Category category) {
+	public Product(@Size(min = 3, max = 25, message = "Product name should contain min 3 charater") String productName,
+			@Min(value = 1, message = "Please Enter the valid  price") Double price, String color, String dimension,
+			String manufacture, @Min(value = 1, message = "Please Enter the valid Quantity") Integer quantity,
+			Category category) {
 		super();
-		this.productId = productId;
 		this.productName = productName;
 		this.price = price;
+		this.color = color;
 		this.dimension = dimension;
-		this.specification = specification;
-		this.manufacturer = manufacturer;
+		this.manufacture = manufacture;
 		this.quantity = quantity;
 		this.category = category;
 	}
-
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price + ", dimension="
-				+ dimension + ", specification=" + specification + ", manufacturer=" + manufacturer + ", quantity="
-				+ quantity + ", category=" + category + "]";
-	}
-
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	public String getDimension() {
-		return dimension;
-	}
-
-	public void setDimension(String dimension) {
-		this.dimension = dimension;
-	}
-
-	public String getSpecification() {
-		return specification;
-	}
-
-	public void setSpecification(String specification) {
-		this.specification = specification;
-	}
-
-	public String getManufacturer() {
-		return manufacturer;
-	}
-
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+	
+	
+	
 	
 	
 	

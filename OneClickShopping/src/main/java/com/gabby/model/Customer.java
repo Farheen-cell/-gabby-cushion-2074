@@ -1,95 +1,65 @@
 package com.gabby.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-
 public class Customer {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cutomerId;
-	private String firstName;
-	private String lastName;
-	private String mobileNumber;
 	
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer customerId;
+    
+	@Size(min = 3 , max = 15, message ="first Name Should be Minimum 3 and Maximum 15")
+    private String firstname;
+    
+	
+	@Size(min = 3 , max = 15, message ="Last Name Should be Minimum 3 and Maximum 15")
+    private String lastname;
+	@Size(min = 10 , max = 10, message ="Mobile Number Should Contains 10 digits")
+    private String mobilenumber;
+     
+	@Email(message = "Please Provide the valid email")
+    private String email;
+    
+	@Size(min = 6 , max = 20, message ="Password should be minumem 6 and maximum 16")
+    private String password;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "cus_Address", joinColumns = @JoinColumn(name ="customer_id", referencedColumnName = "customerId"))
 	private Address address;
-	
-	private String email;
 
-	public Customer() {}
-	
-	public Customer(Integer cutomerId, String firstName, String lastName, String mobileNumber, Address address,
-			String email) {
+	public Customer(
+			@Size(min = 3, max = 15, message = "first Name Should be Minimum 3 and Maximum 15") String firstname,
+			@Size(min = 3, max = 15, message = "Last Name Should be Minimum 3 and Maximum 15") String lastname,
+			@Size(min = 10, max = 10, message = "Mobile Number Should Contains 10 digits") String mobilenumber,
+			@Email(message = "Please Provide the valid email") String email,
+			@Size(min = 6, max = 20, message = "Password should be minumem 6 and maximum 16") String password,
+			Address address) {
 		super();
-		this.cutomerId = cutomerId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.mobileNumber = mobileNumber;
-		this.address = address;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.mobilenumber = mobilenumber;
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [cutomerId=" + cutomerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", mobileNumber=" + mobileNumber + ", address=" + address + ", email=" + email + "]";
-	}
-
-	public Integer getCutomerId() {
-		return cutomerId;
-	}
-
-	public void setCutomerId(Integer cutomerId) {
-		this.cutomerId = cutomerId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
+		this.password = password;
 		this.address = address;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
 	
 	
