@@ -1,6 +1,8 @@
 package com.gabby.Service;
 
 
+import java.util.List;
+
 import java.util.Optional;
 
 import javax.security.auth.login.LoginException;
@@ -56,6 +58,8 @@ public class CustomerServiceImpl  implements CustomerService{
 
 	@Override
 	public Customer updateCust(Customer customer, String key) throws CustomerException, LoginException {
+
+
 		Session s = sdo.findByuuid(key);
 		if(s==null)
 		{
@@ -72,10 +76,44 @@ public class CustomerServiceImpl  implements CustomerService{
 		else {
 			throw new CustomerException("Can't change UserID!") ;
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 
+	
 
+@Override
+public Customer removeCustomer(Customer customer, String key) throws CustomerException, LoginException {
+	// TODO Auto-generated method stub
+	Session s = sdo.findByuuid(key);
+	if(s==null)
+	{
+		throw new LoginException("You are not authoridzed Delete this ");
+	}
+	else
+	{
+		Optional<Customer> ss = cus.findById(customer.getCustomerId());
+		
+		 Customer sss = ss.get();
+		 
+		   cus.deleteById(customer.getCustomerId());
+		return sss;
+	}
+
+	
+}
 
 
 	@Override
@@ -86,9 +124,24 @@ public class CustomerServiceImpl  implements CustomerService{
 			 Customer sss = ss.get();
 			return sss;
 		}
-	}
 
 	
-		
+	
+	
+
+
+
+@Override
+public List<Customer> viewAll(String location) throws CustomerException {
+	List<Customer> c= cus.findByAddress(location);
+	
+	if(c.isEmpty())
+		throw new CustomerException("No Student found with Address :"+location);
+	
+	
+	return c;
+}
+
+}	
 	
 

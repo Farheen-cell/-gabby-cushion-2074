@@ -1,6 +1,8 @@
 package com.gabby.Controller;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 
@@ -69,17 +71,29 @@ public class UserController {
 		 return new ResponseEntity<Customer>(addCustomer, HttpStatus.CREATED);
 	 }
 	
-	
-	
-	@PutMapping("/updacustomer/{key}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable("key") String key, @RequestBody Customer customer) throws LoginException,CustomerException, javax.security.auth.login.LoginException
-	{
-	Customer update =cus.updateCust(customer, key);
+	@PutMapping("/customers")
+	public  ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer,@RequestParam(required = false) String key ) throws CustomerException, javax.security.auth.login.LoginException {
 		
 		
+		Customer updatedCustomer= cus.updateCust(customer, key);
+				
+		return new ResponseEntity<Customer>(updatedCustomer,HttpStatus.OK);
 		
-		return new ResponseEntity<Customer>(update, HttpStatus.CREATED);
 	}
+	
+	
+//	@PutMapping("/updacustomer/{key}")
+//	public ResponseEntity<Customer> updateCustomer(@PathVariable("key") String key, @RequestBody Customer customer) throws LoginException,CustomerException, javax.security.auth.login.LoginException
+//	{
+//	Customer update =cus.updateCust(customer, key);
+//		
+//		
+//		
+//		return new ResponseEntity<Customer>(update, HttpStatus.CREATED);
+//	}
+	
+	
+	
 	
 	 @GetMapping("/getdeta")
 	   public ResponseEntity<Customer> getbyid(@RequestBody Customer p)throws CustomerException{
@@ -90,4 +104,14 @@ public class UserController {
 		   
 		   
 	   }
+	 @GetMapping("/getstudents/{location}")
+		public ResponseEntity<List<Customer>> getStudentsByAddressHandler(@PathVariable("location") String location){
+			
+			
+			List<Customer> students= cus.viewAll(location);
+			
+			
+			return new ResponseEntity<List<Customer>>(students,HttpStatus.OK);
+		}
+		
 }
