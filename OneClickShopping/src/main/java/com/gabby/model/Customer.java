@@ -11,18 +11,20 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Customer {
 	
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
     
 	@Size(min = 3 , max = 15, message ="first Name Should be Minimum 3 and Maximum 15")
@@ -41,6 +43,7 @@ public class Customer {
     private String password;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	@JoinTable(name = "cus_Address", joinColumns = @JoinColumn(name ="customer_id", referencedColumnName = "customerId"))
 	private Address address;
 

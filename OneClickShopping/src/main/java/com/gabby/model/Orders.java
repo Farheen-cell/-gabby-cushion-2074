@@ -1,6 +1,7 @@
 package com.gabby.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,15 +16,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gabby.dto.AdressDto;
 import com.gabby.dto.ProductDto;
 
-import lombok.AllArgsConstructor;
+//import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Data
 @Entity
 public class Orders {
@@ -46,6 +48,7 @@ public class Orders {
     private Double total;
     
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name="customer_order", joinColumns = @JoinColumn(name="order_id", referencedColumnName = "orderId"))
     private Customer customer;
     

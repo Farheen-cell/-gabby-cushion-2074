@@ -27,9 +27,9 @@ import com.gabby.model.Login;
 
 
 
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
 	
