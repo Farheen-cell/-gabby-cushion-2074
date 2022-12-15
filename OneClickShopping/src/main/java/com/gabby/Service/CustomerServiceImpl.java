@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.gabby.Exception.CustomerException;
 import com.gabby.model.Customer;
-import com.gabby.model.Session;
+import com.gabby.model.CurrentAdminSession;
 import com.gabby.repository.CustomerRepo;
 import com.gabby.repository.SessionRepo;
 
@@ -56,7 +56,7 @@ public class CustomerServiceImpl  implements CustomerService{
 
 	@Override
 	public Customer updateCust(Customer customer, String key) throws CustomerException, LoginException {
-		Session s = sdo.findByuuid(key);
+		CurrentAdminSession s = sdo.findByuuid(key);
 		if(s==null)
 		{
 			throw new LoginException("You are not authoridzed to update this ");

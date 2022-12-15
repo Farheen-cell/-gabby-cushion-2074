@@ -4,13 +4,13 @@ package com.gabby.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gabby.model.Session;
+import com.gabby.model.CurrentAdminSession;
 
 
 
-public interface SessionRepo  extends JpaRepository<Session, Integer>{
+public interface SessionRepo  extends JpaRepository<CurrentAdminSession, Integer>{
 
 	
-	public Session findByuuid(String uuid);
+	public CurrentAdminSession findByuuid(String uuid);
 	
 }

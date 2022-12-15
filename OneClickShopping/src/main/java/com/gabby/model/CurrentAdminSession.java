@@ -16,7 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Session {
+public class CurrentAdminSession {
 
 	
 	
@@ -29,7 +29,7 @@ public class Session {
 	
 	private LocalDateTime localDateTime;
 
-	public Session findByuuid(String key) {
+	public CurrentAdminSession findByuuid(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
