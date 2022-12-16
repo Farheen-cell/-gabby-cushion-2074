@@ -1,17 +1,12 @@
-package com.gabby.Exception;
+package com.gabby.exceptions;
 
-public class CustomerException  extends RuntimeException{
+public class CustomerException extends RuntimeException{
 
-	
-	
-	public CustomerException()
-	{
+	public CustomerException(){
 		
 	}
-	
-	public CustomerException(String mess)
-	{
-		super(mess);
+	public CustomerException(String message){
+		
+		super(message);
 	}
 }
-

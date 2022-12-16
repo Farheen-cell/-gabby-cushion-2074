@@ -47,11 +47,6 @@ public class ProductDto {
 		this.dimension = dimension;
 		this.manufacture = manufacture;
 		this.quantity = quantity;
-	}
-
-	
-	
-	
-	
+	}	
 	
 }

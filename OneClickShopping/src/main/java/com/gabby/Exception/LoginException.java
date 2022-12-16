@@ -1,17 +1,13 @@
-package com.gabby.Exception;
+package com.gabby.exceptions;
 
-public class LoginException extends Exception {
-
+public class LoginException extends RuntimeException{
 	
-	
-	public LoginException()
-	{
+	public LoginException(){
 		
 	}
-	
-	public LoginException(String mess)
-	{
-		super(mess);
+	public LoginException(String message){
+		
+		super(message);
 	}
-	
+
 }
