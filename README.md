@@ -2,9 +2,9 @@
 
 <h1 align="center">oneClickShopping application</h1>
 
-<h2 align="center">project-Logo</h2>
+# Customer Controller
 
-<img src="./img/projectLogo.PNG" />
+<img src="./img/projectLogo.png.jpg" />
 
 
 <h2 align="center">A Backend project providing Rest Api for oneClickShopping application. The Api can perform all the crud operation with customer validation on every step.</h2>
