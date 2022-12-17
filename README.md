@@ -1,8 +1,8 @@
 # -gabby-cushion-2074
 
-<h1 align="center">oneClickShopping application</h1>
-
-# Customer Controller
+<h2 align="center">oneClickShopping application</h2>
+<h3>project-Logo</h3>
+ 
 
 <img src="./img/projectLogo.png.jpg" />
 
@@ -59,6 +59,9 @@
   <li><h3>Product Module</h3></li>
   <li><h3>Order Module</h3></li>
   <li><h3>Cart Module</h3></li>
+  <li><h3>Seller Module</h3></li>
+  <li><h3>payment Module</h3></li>
+  <li><h3>Feedback Module</h3></li>
 </ul>
 
 
