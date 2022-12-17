@@ -100,7 +100,7 @@
 
 # Feedback Controller
 
-<img src="./controllers/feedback.PNG" />
+<img src="./img/feedback.PNG" />
 
 # Sales Controller
 
