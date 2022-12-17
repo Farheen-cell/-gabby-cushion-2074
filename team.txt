@@ -1,9 +1,0 @@
-Team members:
-
-Project Topic: Online Shopping Application
-
-fw19_0275 - Puja Rajesh Deshmukh (Leader)
-fw19_0458 - Naman Kumar Singh
-fw19_0432 - Farheen
-fw19_0358 - Rajat Kumar Yadav
-fw19_0512 - Padmanabh Desai
